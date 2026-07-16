@@ -2,7 +2,7 @@
 
 一套可以被 AI Agent 直接接手、完全本地运行、以 Markdown/Obsidian 为核心的个人知识库模板。
 
-本仓库公开的是知识库的**运行机制**，不是作者的私人知识。仓库不包含原作者的来源资料、已摄入知识、个人笔记、维护历史、Cookie、API Key 或本机配置。
+本仓库公开的是知识库的**运行机制**，不是作者的私人知识。仓库不包含原作者的来源资料、已摄入知识、个人笔记、维护历史等。
 
 > English summary: A privacy-safe, Markdown-native blueprint for building and maintaining an AI-operable personal knowledge base without shipping the author's private corpus.
 
