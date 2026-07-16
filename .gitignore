@@ -1,0 +1,23 @@
+# Local configuration and secrets
+config/knowledge-base.local.json
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Runtime outputs
+*.log
+*.sqlite
+*.sqlite3
+*.db
+artifacts/
+.runs/
+
+# Obsidian/UI state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Operating-system files
+Thumbs.db
+.DS_Store

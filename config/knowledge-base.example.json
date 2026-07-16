@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "max_batch_size": 30,
+  "allowed_extensions": [".md"],
+  "source_roots": [
+    {
+      "id": "inbox",
+      "path": "CHANGE_ME_TO_AN_AUTHORIZED_LOCAL_FOLDER"
+    }
+  ],
+  "boards": ["示例板块"],
+  "source_note_prefix": "10-来源笔记"
+}
