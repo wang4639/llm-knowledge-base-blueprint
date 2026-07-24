@@ -61,6 +61,30 @@ RAG 的核心能力是“找回”；LLM 知识库的核心能力是“积累”
 
 运行环境：Windows PowerShell 5.1 或 PowerShell 7；无第三方依赖。
 
+### 让 Codex / Claude Code 自动安装
+
+先准备一个用于安装知识库的空目录。把下面整段提示词复制给 Codex 或 Claude Code；Agent 会先向你确认安装位置、授权资料目录和知识板块，再完成初始化与验证。
+
+```text
+请帮我在本机安装并部署这个 LLM 知识库蓝图：
+https://github.com/wang4639/llm-knowledge-base-blueprint
+
+请严格执行：
+1. 先询问我三个信息：知识库安装目录、允许只读访问的 Markdown 资料目录、需要创建的知识板块；不要猜测本机路径。若我暂时不接入真实资料，就在安装目录外创建一个空的资料入口。
+2. 克隆仓库到我指定的空目录；若目录已存在或非空，先报告冲突，不覆盖、移动或删除任何已有文件。
+3. 完整阅读 README.md、AI-REPRODUCE.md、00-系统/AI Agent 使用指南.md 和 00-系统/知识库使用手册.md 后再写入。
+4. 从 config/knowledge-base.example.json 创建被 Git 忽略的 config/knowledge-base.local.json，只写我授权的本机资料路径和板块；不要写入或索取 API Key、Cookie、Token、私钥。
+5. 运行 scripts/Initialize-KnowledgeBase.ps1，然后运行 scripts/Validate-KnowledgeBase.ps1。
+6. 再运行 tests/Test-KnowledgeBase.ps1 和 tests/Test-PublicRelease.ps1；只有出现 ALL_TESTS_PASSED 与 PUBLIC_RELEASE_SCAN_PASSED 才能宣告完成。
+7. 原始资料全程只读，不复制我的私人资料到 Git，不引入 Horizon、RAG、数据库或云服务，不修改全局配置。
+8. 如果当前客户端支持定时任务，向我确认执行时间后，依据 automations/ 中的两个 Prompt 分别配置“只读维护”和“受限增量摄入”；不把本机路径、模型名或任务 ID 写回公开模板。
+9. 完成后告诉我：安装目录、本地配置路径、已创建板块、两项验证结果、自动化是否配置，以及我下一次应该怎样提问和添加资料。
+```
+
+安装完成后的完整操作方法见 [`00-系统/知识库使用手册.md`](<00-系统/知识库使用手册.md>)。
+
+### 手动安装
+
 ```powershell
 Copy-Item ".\config\knowledge-base.example.json" ".\config\knowledge-base.local.json"
 & ".\scripts\Initialize-KnowledgeBase.ps1" -ProjectRoot "." -ConfigPath ".\config\knowledge-base.local.json"
